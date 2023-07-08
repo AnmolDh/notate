@@ -38,12 +38,13 @@ function CreateNote() {
             className="modalInput"
             name="content"
             placeholder="Take a Note..."
+            rows="2"
           ></textarea>
           <Button id="addNoteBtn">Add Note</Button>
         </Box>
       </Modal>
     </>
   );
-}
+};
 
 export default CreateNote;
