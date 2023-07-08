@@ -24,7 +24,7 @@ header h1 {
   font-size: 2.5rem;
 }
 
-.newNoteInput {
+.newNoteDiv {
   background-color: #d9d9d9;
   border-radius: 20px;
   min-width: 300px;
@@ -34,19 +34,19 @@ header h1 {
   display: flex;
 }
 
-.newNoteInput input,
-.newNoteInput button {
+.newNoteDiv input,
+.newNoteDiv button {
   border: none;
   line-height: 10px;
   padding: 10px;
   background-color: transparent;
 }
 
-.newNoteInput input {
+.newNoteDiv input {
   flex: 1;
 }
 
-.newNoteInput button {
+.newNoteDiv button {
   background-color: black;
   color: white;
   border-radius: 50%;
@@ -54,13 +54,35 @@ header h1 {
   height: 40px;
 }
 
-.newNoteInput input:focus {
+.newNoteDiv input:focus {
   outline: none;
 }
 
+.modalInput{
+  border: none;
+  padding: 10px;
+  font-size: 1.3rem;
+  background-color: rgb(18, 18, 18);
+  color: white;
+}
+
+.modalInput[type="text"]{
+  font-weight: bold;
+}
+
+.modalInput:focus{
+  outline: none;
+}
+
+#addNoteBtn{
+  float: right;
+}
+
 .notes{
-  width: 100%;
   padding: 60px 80px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .note{

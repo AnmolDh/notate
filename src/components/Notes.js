@@ -36,6 +36,6 @@ function Notes() {
       />
     </div>
   );
-};
+}
 
 export default Notes;

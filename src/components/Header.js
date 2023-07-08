@@ -1,13 +1,11 @@
 import React from "react";
+import CreateNote from "./CreateNote";
 
-function Header() {
+function Header(props) {
   return (
     <header>
       <h1>Notate</h1>
-      <form className="newNoteInput">
-        <input placeholder="Take a note"></input>
-        <button>+</button>
-      </form>
+      <CreateNote />
       <div className="avatarDiv">
         <img src="./avatar.png" alt="avatar"></img>
       </div>
