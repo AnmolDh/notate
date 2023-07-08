@@ -1,0 +1,85 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: black;
+  font-family: "Archivo", sans-serif;
+}
+
+header {
+  display: flex;
+  color: white;
+  width: 100%;
+  justify-content: space-between;
+  padding: 30px 60px;
+  align-items: center;
+}
+
+header h1 {
+  font-size: 2.5rem;
+}
+
+.newNoteInput {
+  background-color: #d9d9d9;
+  border-radius: 20px;
+  min-width: 300px;
+  width: 30%;
+  max-width: 500px;
+  padding: 5px;
+  display: flex;
+}
+
+.newNoteInput input,
+.newNoteInput button {
+  border: none;
+  line-height: 10px;
+  padding: 10px;
+  background-color: transparent;
+}
+
+.newNoteInput input {
+  flex: 1;
+}
+
+.newNoteInput button {
+  background-color: black;
+  color: white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+.newNoteInput input:focus {
+  outline: none;
+}
+
+.notes{
+  width: 100%;
+  padding: 60px 80px;
+}
+
+.note{
+  height: fit-content;
+  width: 250px;
+  border-radius: 10px;
+  padding: 20px 10px 30px 10px;
+  margin-bottom: 30px;
+  word-wrap: break-word;
+  float: left;
+  margin: 16px;
+  float: left;
+}
+
+.noteTitle, .noteContent{
+  padding: 0 10px;
+}
+
+.note hr{
+  margin: 5px 0 10px 0;
+  color: #777777;
+}
