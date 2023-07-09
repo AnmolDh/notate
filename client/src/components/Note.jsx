@@ -2,9 +2,9 @@ import React from "react";
 
 function Note(props) {
   return (
-    <div className="note" style={{ backgroundColor: props.bgColor }}>
+    <div className="note" style={{ backgroundColor: "gray" }}>
       <div className="noteTitle">
-        <h3>Sample Note</h3>
+        <h3>{props.title}</h3>
       </div>
       <hr />
       <div className="noteContent">
