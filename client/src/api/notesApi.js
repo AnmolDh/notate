@@ -15,8 +15,17 @@ export function postNote(note) {
     .catch((err) => console.log(err));
 }
 
-export function deleteNote(delID) {
-  return fetch(`http://localhost:4000/${delID}`, { method: "DELETE" })
+export function deleteNote(id) {
+  return fetch(`http://localhost:4000/${id}`, { method: "DELETE" })
     .then((response) => response.json())
     .catch((err) => console.log(err));
+}
+
+export function editNote(id, note) {
+  return fetch(`http://localhost:4000/${id}`, {
+    method: "PUT",
+    body: JSON.stringify(note),
+  })
+    .then(response => response.json())
+    .catch(err => console.log(err));
 }
