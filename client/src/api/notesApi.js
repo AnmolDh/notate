@@ -1,6 +1,11 @@
 export function getNotes() {
-  return fetch("http:localhost:4000/")
-    .then((response) => response.json())
+  return fetch("http://localhost:4000/")
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      return data;
+    })
     .catch((err) => console.log(err));
 }
 
