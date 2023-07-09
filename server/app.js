@@ -33,9 +33,9 @@ app.post("/", (req, res) => {
   res.send(note);
 });
 
-app.delete("/", (req, res) => {
-  Note.deleteOne({ _id: req.body.id })
-    .then(() => res.send("object deleted"))
+app.delete("/:id", (req, res) => {
+  Note.deleteOne({ _id: req.params.id })
+    .then((r) => res.send(r))
     .catch((err) => res.send(err));
 });
 

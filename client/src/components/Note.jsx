@@ -7,7 +7,6 @@ import { deleteNote } from "../api/notesApi";
 function Note(props) {
   function handleDelete() {
     deleteNote(props.id);
-    console.log(props.id)
   }
 
   return (

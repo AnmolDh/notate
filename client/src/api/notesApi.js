@@ -16,7 +16,7 @@ export function postNote(note) {
 }
 
 export function deleteNote(delID) {
-  return fetch("http://localhost:4000/", { method: "DELETE", body: { id: delID } })
+  return fetch(`http://localhost:4000/${delID}`, { method: "DELETE" })
     .then((response) => response.json())
     .catch((err) => console.log(err));
 }
