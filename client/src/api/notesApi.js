@@ -1,11 +1,7 @@
 export function getNotes() {
   return fetch("http://localhost:4000/")
-    .then((response) => {
-      return response.json();
-    })
-    .then((data) => {
-      return data;
-    })
+    .then((response) => response.json())
+    .then((data) => data)
     .catch((err) => console.log(err));
 }
 
@@ -19,8 +15,8 @@ export function postNote(note) {
     .catch((err) => console.log(err));
 }
 
-export function deleteNote(id) {
-  return fetch("http:localhost:4000", { method: "DELETE", body: { id: id } })
+export function deleteNote(delID) {
+  return fetch("http://localhost:4000/", { method: "DELETE", body: { id: delID } })
     .then((response) => response.json())
     .catch((err) => console.log(err));
 }

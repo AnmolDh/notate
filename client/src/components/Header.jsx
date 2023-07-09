@@ -1,7 +1,7 @@
 import React from "react";
 import CreateNote from "./CreateNote";
 
-function Header(props) {
+function Header() {
   return (
     <header>
       <h1>Notate</h1>

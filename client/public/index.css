@@ -58,7 +58,7 @@ header h1 {
   outline: none;
 }
 
-.modalInput{
+.modalInput {
   border: none;
   padding: 10px;
   font-size: 1.3rem;
@@ -66,26 +66,26 @@ header h1 {
   color: white;
 }
 
-.modalInput[type="text"]{
+.modalInput[type="text"] {
   font-weight: bold;
 }
 
-.modalInput:focus{
+.modalInput:focus {
   outline: none;
 }
 
-#addNoteBtn{
+#addNoteBtn {
   float: right;
 }
 
-.notes{
+.notes {
   padding: 60px 80px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
 
-.note{
+.note {
   height: fit-content;
   width: 250px;
   border-radius: 10px;
@@ -97,11 +97,27 @@ header h1 {
   float: left;
 }
 
-.noteTitle, .noteContent{
+.noteTitle,
+.noteContent {
   padding: 0 10px;
 }
 
-.note hr{
+.note hr {
   margin: 5px 0 10px 0;
   color: #777777;
+}
+
+.note .toolsDiv{
+  display: none;
+  float: right;
+  position: relative;
+  bottom: -20px;
+}
+
+.note:hover .toolsDiv{
+  display: block;
+}
+
+.note .icon{
+  margin-left: 5px;
 }

@@ -25,6 +25,7 @@ function Notes() {
       {notes.map((note) => (
         <Note
           key={note._id}
+          id={note._id}
           title={note.title}
           content={note.content}
           bgColor={note.bgColor}
