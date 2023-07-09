@@ -19,6 +19,19 @@ function CreateNote() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  const [createNote, setCreateNote] = useState({
+    title: "",
+    content: "",
+  });
+
+  function handleInput(e) {
+    const { name, value } = e.target;
+    setCreateNote((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  }
+
   return (
     <>
       <div className="newNoteDiv" onClick={handleOpen}>
@@ -33,18 +46,24 @@ function CreateNote() {
             type="text"
             name="title"
             placeholder="Title"
+            onChange={handleInput}
+            value={createNote.title}
           ></input>
           <textarea
             className="modalInput"
             name="content"
             placeholder="Take a Note..."
             rows="2"
+            onChange={handleInput}
+            value={createNote.content}
           ></textarea>
-          <Button id="addNoteBtn">Add Note</Button>
+          <Button id="addNoteBtn">
+            Add Note
+          </Button>
         </Box>
       </Modal>
     </>
   );
-};
+}
 
 export default CreateNote;

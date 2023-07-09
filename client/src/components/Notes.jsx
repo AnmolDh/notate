@@ -9,19 +9,6 @@ function Notes() {
     return bgColor[Math.floor(Math.random() * bgColor.length)];
   }
 
-  useEffect(() => {
-    fetch("http://localhost:4000")
-      .then((response) => response.json())
-      .then((data) => {
-        const notes = data.map((note) => ({
-          ...note,
-          bgColor: randomBgColor(),
-        }));
-        setNotes(notes);
-      })
-      .catch((err) => console.log(err));
-  }, []);
-
   return (
     <div className="notes">
       {notes.map((note) => (
