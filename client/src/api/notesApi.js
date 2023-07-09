@@ -10,7 +10,7 @@ export function getNotes() {
 }
 
 export function postNote(note) {
-  return fetch("http:localhost:4000/", {
+  return fetch("http://localhost:4000/", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(note),

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Box, Button, Modal } from "@mui/material";
+import { postNote } from "../api/notesApi";
 
 const modalStyle = {
   position: "absolute",
@@ -32,6 +33,12 @@ function CreateNote() {
     }));
   }
 
+  function handlePost() {
+    postNote(createNote).then(() => {});
+    handleClose();
+    setCreateNote({ title: "", content: "" });
+  };
+
   return (
     <>
       <div className="newNoteDiv" onClick={handleOpen}>
@@ -57,13 +64,13 @@ function CreateNote() {
             onChange={handleInput}
             value={createNote.content}
           ></textarea>
-          <Button id="addNoteBtn">
+          <Button id="addNoteBtn" onClick={handlePost}>
             Add Note
           </Button>
         </Box>
       </Modal>
     </>
   );
-}
+};
 
 export default CreateNote;
