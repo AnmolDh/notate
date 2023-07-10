@@ -30,6 +30,8 @@ function Notes(props) {
           title={note.title}
           content={note.content}
           bgColor={note.bgColor}
+          handleDelete={() => props.handleDelete(note._id)}
+          handleEdit={props.handleEdit}
         />
       ))}
       <CreateNote
@@ -38,7 +40,6 @@ function Notes(props) {
         handlePost={props.handlePost}
         createNote={props.createNote}
         handleClose={props.handleClose}
-        handleOpen={props.handleOpen}
       />
     </div>
   );
