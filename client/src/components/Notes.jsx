@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Note from "./Note";
 import { getNotes } from "../api/notesApi";
+import CreateNote from "./CreateNote";
 
-function Notes() {
+function Notes(props) {
   const [notes, setNotes] = useState([]);
 
   useEffect(() => {
@@ -31,6 +32,14 @@ function Notes() {
           bgColor={note.bgColor}
         />
       ))}
+      <CreateNote
+        open={props.open}
+        handleInput={props.handleInput}
+        handlePost={props.handlePost}
+        createNote={props.createNote}
+        handleClose={props.handleClose}
+        handleOpen={props.handleOpen}
+      />
     </div>
   );
 };
