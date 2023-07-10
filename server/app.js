@@ -84,4 +84,7 @@ app.patch("/", (req, res) => {
     .catch((err) => res.send(err));
 });
 
-app.listen(4000, () => console.log("server started!"));
+const port = process.env.PORT || 4000;
+app.listen(port, () => {
+  console.log(`Server listening on port ${port}`);
+});
