@@ -13,27 +13,57 @@ Notate is a note-taking web application built with React and Node.js. It is curr
 
 ## Installation
 
-1. Clone the repository:
+1. Fork the repository by clicking the "Fork" button on the GitHub repository page.
 
-   ```shell
-   git clone https://github.com/AnmolDh/notate.git
+2. Clone the forked repository to your local machine:
+
+   ```bash
+   git clone https://github.com/YourUsername/weather-kun.git
+   ```
+   
+### Server
+
+1. Navigate to the server directory:
+
+   ```bash
+   cd notate/server
    ```
 
 2. Install the dependencies:
 
-   ```shell
-   cd notate
+   ```bash
+   npm install
+   ```
+
+3. Start the server:
+
+   ```bash
+   npm start
+   ```
+
+   The server will start running on [http://localhost:4000](http://localhost:4000).
+
+### Client
+
+1. Navigate to the client directory:
+
+   ```bash
+   cd notate/client
+   ```
+
+2. Install the dependencies:
+
+   ```bash
    npm install
    ```
 
 3. Start the development server:
 
-   ```shell
-   cd ..
+   ```bash
    npm start
    ```
 
-4. Access the application by visiting `http://localhost:3000` in your browser.
+   The client application will open in your preferred web browser at [http://localhost:3000](http://localhost:3000).
 
 ## Technologies Used (will use)
 
