@@ -1,6 +1,6 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Note from "./Note";
-import { deleteNote, getNotes, postNote } from "../api/notesApi";
+import { getNotes, postNote, deleteNote, editNote } from "../api/notesApi";
 import CreateNote from "./CreateNote";
 
 function Notes(props) {
@@ -11,7 +11,7 @@ function Notes(props) {
     return bgColor[Math.floor(Math.random() * bgColor.length)];
   }
 
-  const updateNotes = useCallback(() => {
+  useEffect(() => {
     getNotes().then((data) => {
       const notes = data.map((note) => ({
         ...note,
@@ -19,16 +19,17 @@ function Notes(props) {
       }));
       setNotes(notes);
     });
-  }, [])
-
-  useEffect(() => {
-    updateNotes();
-    console.count("hi")
-  }, [updateNotes]);
+  }, []);
 
   function handlePost() {
     postNote(props.addNote).then(() => {
-      updateNotes();
+      getNotes().then((data) => {
+        const notes = data.map((note) => ({
+          ...note,
+          bgColor: randomBgColor(),
+        }));
+        setNotes(notes);
+      });
     });
     props.handleClose();
     props.setAddNote({ title: "", content: "" });
@@ -40,6 +41,8 @@ function Notes(props) {
     });
   }
 
+  function handleEdit() {}
+
   return (
     <div className="notes">
       {notes.map((note) => (
@@ -50,14 +53,14 @@ function Notes(props) {
           content={note.content}
           bgColor={note.bgColor}
           handleDelete={() => handleDelete(note._id)}
-          handleEdit={props.handleEdit}
+          handleEdit={handleEdit}
         />
       ))}
       <CreateNote
         open={props.open}
         handleInput={props.handleInput}
         handlePost={handlePost}
-        createNote={props.createNote}
+        createNote={props.addNote}
         handleClose={props.handleClose}
       />
     </div>
