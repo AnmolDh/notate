@@ -18,7 +18,7 @@ Notate is a note-taking web application built with React and Node.js. It is curr
 2. Clone the forked repository to your local machine:
 
    ```bash
-   git clone https://github.com/YourUsername/weather-kun.git
+   git clone https://github.com/YourUsername/notate.git
    ```
    
 ### Server
