@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import Header from "../components/Header";
 import Notes from "../components/Notes";
-import { postNote, deleteNote, editNote } from "../api/notesApi";
 
-function Home(props) {
+function Home() {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -21,18 +20,6 @@ function Home(props) {
     }));
   }
 
-  function handlePost() {
-    postNote(createNote).then(() => {});
-    handleClose();
-    setCreateNote({ title: "", content: "" });
-  }
-
-  function handleDelete(id) {
-    deleteNote(id);
-  }
-
-  function handleEdit() {}
-
   return (
     <>
       <Header handleOpen={handleOpen} />
@@ -42,8 +29,8 @@ function Home(props) {
         handleInput={handleInput}
         handleClose={handleClose}
         handleOpen={handleOpen}
-        handlePost={handlePost}
-        handleDelete={handleDelete}
+        addNote={createNote}
+        setAddNote={setCreateNote}
       />
     </>
   );
