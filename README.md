@@ -1,3 +1,7 @@
+```diff 
+- [ outdated readme!! will update soon ]
+```
+
 # Notate
 
 Notate is a note-taking web application built with React and Node.js. It is currently in the early development stage and aims to provide users with a simple and intuitive platform for managing their notes.

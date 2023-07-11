@@ -4,13 +4,15 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const Note = require("./models/note")
 const handleRoutes = require("./routes/routesHandler");
+const reqAuth = require("./auth/reqAuth")
 require("dotenv").config();
 
 const app = express();
 
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(cors());
+app.use(reqAuth);
 app.use(handleRoutes);
 
 mongoose.connect(process.env.MONGODB_URL);
