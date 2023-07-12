@@ -41,7 +41,14 @@ function Notes(props) {
     });
   }
 
-  function handleEdit() {}
+  function handleEdit(id, title, content) {
+    props.setIsNewNote(false);
+    props.handleOpen();
+    props.setCreateNote({
+      title: title,
+      content: content
+    });
+  }
 
   return (
     <div className="notes">
@@ -53,7 +60,7 @@ function Notes(props) {
           content={note.content}
           bgColor={note.bgColor}
           handleDelete={() => handleDelete(note._id)}
-          handleEdit={handleEdit}
+          handleEdit={() => handleEdit(note._id, note.title, note.content)}
         />
       ))}
       <CreateNote
@@ -62,6 +69,7 @@ function Notes(props) {
         handlePost={handlePost}
         createNote={props.addNote}
         handleClose={props.handleClose}
+        isNewNote={props.isNewNote}
       />
     </div>
   );

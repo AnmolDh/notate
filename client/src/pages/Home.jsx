@@ -4,8 +4,16 @@ import Notes from "../components/Notes";
 
 function Home() {
   const [open, setOpen] = useState(false);
+  const [isNewNote, setIsNewNote] = useState(true);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {
+    setOpen(false);
+    setIsNewNote(true);
+    setCreateNote({
+      title: "",
+      content: "",
+    });
+  };
 
   const [createNote, setCreateNote] = useState({
     title: "",
@@ -26,11 +34,14 @@ function Home() {
       <Notes
         open={open}
         createNote={createNote}
+        setCreateNote={setCreateNote}
         handleInput={handleInput}
         handleClose={handleClose}
         handleOpen={handleOpen}
         addNote={createNote}
         setAddNote={setCreateNote}
+        isNewNote={isNewNote}
+        setIsNewNote={setIsNewNote}
       />
     </>
   );

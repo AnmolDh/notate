@@ -35,9 +35,15 @@ function CreateNote(props) {
             onChange={props.handleInput}
             value={props.createNote.content}
           ></textarea>
-          <Button id="addNoteBtn" onClick={props.handlePost}>
-            Add Note
-          </Button>
+            {props.isNewNote ? (
+            <Button id="addNoteBtn" onClick={props.handlePost}>
+              Add Note
+            </Button>
+          ) : (
+            <Button id="addNoteBtn" onClick={props.handlePost}>
+              Edit Note
+            </Button>
+          )}
         </Box>
       </Modal>
     </>
