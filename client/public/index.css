@@ -74,7 +74,7 @@ header h1 {
   outline: none;
 }
 
-#addNoteBtn {
+#addNoteBtn, #editNoteBtn {
   float: right;
 }
 
