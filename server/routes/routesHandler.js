@@ -9,8 +9,8 @@ app.post("/", notesController.postNote);
 
 app.delete("/:id", notesController.deleteNote);
 
-app.put("/", notesController.replaceNote);
+app.put("/:id", notesController.replaceNote);
 
-app.patch("/", notesController.updateNote);
+app.patch("/:id", notesController.updateNote);
 
 module.exports = app;

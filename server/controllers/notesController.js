@@ -24,7 +24,7 @@ exports.deleteNote = (req, res) => {
 exports.replaceNote = (req, res) => {
   Note.replaceOne(
     {
-      _id: req.body.id,
+      _id: req.params.id,
     },
     {
       title: req.body.title,
@@ -37,7 +37,7 @@ exports.replaceNote = (req, res) => {
 
 exports.updateNote = (req, res) => {
   Note.updateOne(
-    { _id: req.body.id },
+    { _id: req.params.id },
     {
       title: req.body.title,
       content: req.body.content,
