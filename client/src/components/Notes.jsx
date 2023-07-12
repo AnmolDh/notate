@@ -28,13 +28,7 @@ function Notes(props) {
 
   function handleAdd() {
     postNote(props.addNote).then(() => {
-      getNotes().then((data) => {
-        const notes = data.map((note) => ({
-          ...note,
-          bgColor: randomBgColor(),
-        }));
-        setNotes(notes);
-      });
+      updateNotes();
     });
     props.handleClose();
     props.setAddNote({ title: "", content: "" });
