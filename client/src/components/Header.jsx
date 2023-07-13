@@ -8,7 +8,10 @@ function Header(props) {
         <input placeholder="Take a note" disabled></input>
         <button>+</button>
       </div>
-      <div className="avatarDiv">
+      <div className="headerTools">
+        <button className="newNoteMobile" onClick={props.handleOpen}>
+          +
+        </button>
         <img src="./avatar.png" alt="avatar"></img>
       </div>
     </header>
