@@ -1,48 +1,71 @@
-const Note = require("../models/note");
+const { Note, User } = require("../models/models");
 
 exports.getNotes = (req, res) => {
-  Note.find({}).then((data) => {
-    res.send(data);
-  });
+  if (req.isAuthenticated()) {
+    User.findOne({ _id: req.user.id }).then((data) => {
+      res.send(
+        "<form method='POST' action='/'><input type='text' name='title'></input><input type='text' name='content'></input><input type='submit'></input></form>");
+    });
+  } else {
+    res.status(401).json({ error: "Unauthorized Access" });
+  }
 };
 
 exports.postNote = (req, res) => {
-  const note = new Note({
-    title: req.body.title,
-    content: req.body.content,
-  });
-  note.save();
-  res.send(note);
+  if (req.isAuthenticated()) {
+    const note = new Note({
+      title: req.body.title,
+      content: req.body.content,
+    });
+    User.findOne({ _id: req.user.id }).then((data) => {
+      data.notes.push(note);
+      data.save();
+    });
+  } else {
+    res.status(401).json({ error: "Unauthorized Access" });
+  }
 };
 
 exports.deleteNote = (req, res) => {
-  Note.deleteOne({ _id: req.params.id })
-    .then((r) => res.send(r))
-    .catch((err) => res.send(err));
+  if (req.isAuthenticated()) {
+    Note.deleteOne({ _id: req.params.id })
+      .then((r) => res.send(r))
+      .catch((err) => res.send(err));
+  } else {
+    res.status(401).json({ error: "Unauthorized Access" });
+  }
 };
 
 exports.replaceNote = (req, res) => {
-  Note.replaceOne(
-    {
-      _id: req.params.id,
-    },
-    {
-      title: req.body.title,
-      content: req.body.content,
-    }
-  )
-    .then((r) => res.send(r))
-    .catch((err) => res.send(err));
+  if (req.isAuthenticated()) {
+    Note.replaceOne(
+      {
+        _id: req.params.id,
+      },
+      {
+        title: req.body.title,
+        content: req.body.content,
+      }
+    )
+      .then((r) => res.send(r))
+      .catch((err) => res.send(err));
+  } else {
+    res.status(401).json({ error: "Unauthorized Access" });
+  }
 };
 
 exports.updateNote = (req, res) => {
-  Note.updateOne(
-    { _id: req.params.id },
-    {
-      title: req.body.title,
-      content: req.body.content,
-    }
-  )
-    .then((r) => res.send(r))
-    .catch((err) => res.send(err));
+  if (req.isAuthenticated()) {
+      Note.updateOne(
+        { _id: req.params.id },
+        {
+          title: req.body.title,
+          content: req.body.content,
+        }
+      )
+        .then((r) => res.send(r))
+        .catch((err) => res.send(err));
+  } else {
+    res.status(401).json({ error: "Unauthorized Access" });
+  }
 };
