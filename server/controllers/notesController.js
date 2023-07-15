@@ -19,6 +19,7 @@ exports.postNote = (req, res) => {
     User.findOne({ _id: req.user._id }).then((data) => {
       data.notes.push(note);
       data.save();
+      res.send(data);
     });
   } else {
     res.status(401).json({ error: "Unauthorized Access" });
@@ -27,8 +28,12 @@ exports.postNote = (req, res) => {
 
 exports.deleteNote = (req, res) => {
   if (req.isAuthenticated()) {
-    Note.deleteOne({ _id: req.params.id })
-      .then((r) => res.send(r))
+    User.findOneAndUpdate(
+      { _id: req.user._id },
+      { $pull: { notes: { _id: req.params.id } } },
+      { new: true }
+    )
+      .then((data) => res.send(data))
       .catch((err) => res.send(err));
   } else {
     res.status(401).json({ error: "Unauthorized Access" });
@@ -37,16 +42,16 @@ exports.deleteNote = (req, res) => {
 
 exports.replaceNote = (req, res) => {
   if (req.isAuthenticated()) {
-    Note.replaceOne(
+    User.findOneAndUpdate(
+      { _id: req.user._id, "notes._id": req.params.id },
       {
-        _id: req.params.id,
+        $set: {
+          "notes.$": { title: req.body.title, content: req.body.content },
+        },
       },
-      {
-        title: req.body.title,
-        content: req.body.content,
-      }
+      { new: true }
     )
-      .then((r) => res.send(r))
+      .then((data) => res.send(data))
       .catch((err) => res.send(err));
   } else {
     res.status(401).json({ error: "Unauthorized Access" });
@@ -55,15 +60,20 @@ exports.replaceNote = (req, res) => {
 
 exports.updateNote = (req, res) => {
   if (req.isAuthenticated()) {
-      Note.updateOne(
-        { _id: req.params.id },
+    if (req.isAuthenticated()) {
+      User.findOneAndUpdate(
+        { _id: req.user._id, "notes._id": req.params.id },
         {
-          title: req.body.title,
-          content: req.body.content,
-        }
+          $set: {
+            "notes.$.title": req.body.title,
+            "notes.$.content": req.body.content,
+          },
+        },
+        { new: true }
       )
-        .then((r) => res.send(r))
+        .then((data) => res.send(data))
         .catch((err) => res.send(err));
+    }
   } else {
     res.status(401).json({ error: "Unauthorized Access" });
   }

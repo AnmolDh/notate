@@ -46,10 +46,10 @@ const defaultNotes = [
   },
 ];
 
-User.findOne({ _id: "64b25171bb5fd0dd70fe043a" }).then((r) => {
-  r.notes.length === 0 && r.notes.push(defaultNotes[0]);
-  r.save();
-});
+// User.findOne({ _id: "64b25171bb5fd0dd70fe043a" }).then((r) => {
+//   r.notes.length === 0 && r.notes.push(defaultNotes[0]);
+//   r.save();
+// });
 
 const port = process.env.PORT || 4000;
 app.listen(port, () => {

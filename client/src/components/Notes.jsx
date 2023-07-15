@@ -28,7 +28,7 @@ function Notes(props) {
 
   function handleAdd() {
     postNote(props.addNote).then(() => {
-      updateNotes();
+      updateNotes()
     });
     props.handleClose();
     props.setAddNote({ title: "", content: "" });
@@ -53,7 +53,7 @@ function Notes(props) {
   function handleEditNote() {
     editNote(noteId, props.createNote);
     props.handleClose();
-    updateNotes();
+    setTimeout(updateNotes, 100);
   }
 
   return (
