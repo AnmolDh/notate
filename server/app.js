@@ -15,7 +15,7 @@ const app = express();
 mongoose.connect(process.env.MONGODB_URL);
 
 app.use(cors({
-  origin: "http://localhost:3000",
+  origin: process.env.CLIENT_URL,
   credentials: true
 }));
 app.use(bodyParser.urlencoded({ extended: true }));
