@@ -5,7 +5,11 @@ export function getNotes() {
     },
     credentials: "include",
   })
-    .then((response) => response.json())
+    .then((response) =>
+      response.status === 401
+        ? window.location.replace("/login")
+        : response.json()
+    )
     .then((data) => data)
     .catch((err) => console.log(err));
 }
