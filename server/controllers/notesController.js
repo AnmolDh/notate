@@ -16,7 +16,7 @@ exports.postNote = (req, res) => {
       title: req.body.title,
       content: req.body.content,
     });
-    User.findOne({ _id: req.user.id }).then((data) => {
+    User.findOne({ _id: req.user._id }).then((data) => {
       data.notes.push(note);
       data.save();
     });
