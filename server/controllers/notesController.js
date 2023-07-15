@@ -3,8 +3,7 @@ const { Note, User } = require("../models/models");
 exports.getNotes = (req, res) => {
   if (req.isAuthenticated()) {
     User.findOne({ _id: req.user.id }).then((data) => {
-      res.send(
-        "<form method='POST' action='/'><input type='text' name='title'></input><input type='text' name='content'></input><input type='submit'></input></form>");
+      res.send(data.notes);
     });
   } else {
     res.status(401).json({ error: "Unauthorized Access" });

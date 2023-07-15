@@ -11,9 +11,11 @@ function Login() {
         <h1>Notate</h1>
       </header>
       <div>
-        <button type="button" class="login-with-google-btn">
-          Sign in with Google
-        </button>
+        <a href="http://localhost:4000/auth/google">
+          <button type="button" className="login-with-google-btn">
+            Sign in with Google
+          </button>
+        </a>
       </div>
     </div>
   );
