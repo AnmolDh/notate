@@ -12,7 +12,10 @@ require("dotenv").config();
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: "http://localhost:3000",
+  credentials: true
+}));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 // app.use(reqAuth);
@@ -31,7 +34,7 @@ app.use(passport.session());
 
 passport.serializeUser(function (user, cb) {
   process.nextTick(function () {
-    cb(null, { id: user.id, username: user.username, name: user.name });
+    cb(null, user);
   });
 });
 

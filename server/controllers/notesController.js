@@ -2,7 +2,7 @@ const { Note, User } = require("../models/models");
 
 exports.getNotes = (req, res) => {
   if (req.isAuthenticated()) {
-    User.findOne({ _id: req.user.id }).then((data) => {
+    User.findOne({ _id: req.user._id }).then((data) => {
       res.send(data.notes);
     });
   } else {
