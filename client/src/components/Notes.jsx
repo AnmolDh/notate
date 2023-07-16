@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
-import Note from "./Note";
 import { getNotes, postNote, deleteNote, editNote } from "../api/notesApi";
+import Note from "./Note";
 import CreateNote from "./CreateNote";
 
 function Notes(props) {

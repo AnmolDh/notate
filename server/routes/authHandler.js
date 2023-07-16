@@ -17,4 +17,6 @@ app.get(
   }
 );
 
+app.get("/isAuth", (req, res) => res.send(req.isAuthenticated()));
+
 module.exports = app;

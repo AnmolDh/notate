@@ -7,7 +7,7 @@ export function getNotes() {
   })
     .then((response) =>
       response.status === 401
-        ? window.location.replace("/login")
+        ? window.location.replace("/")
         : response.json()
     )
     .then((data) => data)
@@ -29,7 +29,7 @@ export function postNote(note) {
 }
 
 export function deleteNote(id) {
-  return fetch(`${process.env.REACT_APP_SERVER_URL}${id}`, {
+  return fetch(`${process.env.REACT_APP_SERVER_URL}/${id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
@@ -42,7 +42,7 @@ export function deleteNote(id) {
 }
 
 export function editNote(id, note) {
-  return fetch(`${process.env.REACT_APP_SERVER_URL}${id}`, {
+  return fetch(`${process.env.REACT_APP_SERVER_URL}/${id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
