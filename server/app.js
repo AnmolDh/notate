@@ -5,7 +5,6 @@ const cors = require("cors");
 const { User } = require("./models/models");
 const handleRoutes = require("./routes/routesHandler");
 const handleAuthRoutes = require("./routes/authHandler")
-const reqAuth = require("./auth/reqAuth");
 const passport = require("passport");
 const googleAuth = require("./auth/google")
 const session = require("express-session");
@@ -20,10 +19,9 @@ app.use(cors({
 }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-// app.use(reqAuth);
 app.use(
   session({
-    secret: "keyboard cat",
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
   })
