@@ -1,8 +1,11 @@
 const { Note, User } = require("../models/models");
+const defaultNotes = require("./defaultNotes")
 
 exports.getNotes = (req, res) => {
   if (req.isAuthenticated()) {
     User.findOne({ _id: req.user._id }).then((data) => {
+      data.notes.length === 0 && defaultNotes.forEach((e) => data.notes.push(e));
+      data.save();
       res.send(data.notes);
     });
   } else {
