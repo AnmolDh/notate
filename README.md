@@ -1,13 +1,8 @@
-```diff 
-- [ outdated readme!! will update soon ]
-```
-
 # Notate
 
-Notate is a note-taking web application built with React and Node.js. It is currently in the early development stage and aims to provide users with a simple and intuitive platform for managing their notes.
+Notate is a note-taking web application built with React and Node.js. It is currently in the development stage and aims to provide users with a simple and intuitive platform for managing their notes.
 
-## Features (Planned)
-
+## Features
 - Create new notes with a title and content.
 - Edit and update existing notes.
 - Delete notes that are no longer needed.
@@ -24,7 +19,7 @@ Notate is a note-taking web application built with React and Node.js. It is curr
    ```bash
    git clone https://github.com/YourUsername/notate.git
    ```
-   
+
 ### Server
 
 1. Navigate to the server directory:
@@ -39,7 +34,15 @@ Notate is a note-taking web application built with React and Node.js. It is curr
    npm install
    ```
 
-3. Start the server:
+3. Set up the following environment variables in the server:
+
+   - `CLIENT_URL`: The URL where the client application is hosted.
+   - `MONGODB_URL`: The connection URL for your MongoDB database.
+   - `SESSION_SECRET`: A secret key used to encrypt session data.
+   - `GOOGLE_CLIENT_ID`: Your Google API client ID for authentication.
+   - `GOOGLE_CLIENT_SECRET`: Your Google API client secret for authentication
+
+4. Start the server:
 
    ```bash
    npm start
@@ -61,7 +64,11 @@ Notate is a note-taking web application built with React and Node.js. It is curr
    npm install
    ```
 
-3. Start the development server:
+3. Set up the following environment variable in the client:
+
+   - `REACT_APP_SERVER_URL`: The URL of the backend server.
+
+4. Start the development server:
 
    ```bash
    npm start
@@ -69,7 +76,11 @@ Notate is a note-taking web application built with React and Node.js. It is curr
 
    The client application will open in your preferred web browser at [http://localhost:3000](http://localhost:3000).
 
-## Technologies Used (will use)
+## Hosting Requirements
+
+Notate currently requires a VPS (Virtual Private Server) hosting environment to ensure that the client and server can be hosted on the same domain. This is necessary to make cookies work seamlessly. Traditional hosting platforms like VPS providers (e.g., DigitalOcean, Linode) or cloud-based solutions (e.g., AWS EC2 instances) are recommended for deploying Notate.
+
+## Technologies Used
 
 - React: JavaScript library for building the user interface.
 - Node.js: JavaScript runtime environment for the backend.
