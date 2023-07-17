@@ -12,12 +12,13 @@ passport.use(
       profileFields: ["id", "displayName", "email"],
     },
     function (accessToken, refreshToken, profile, cb) {
-      User.findOne({ userId: profile.id })
+      User.findOne({ authId: profile._json.id })
         .exec()
         .then((user) => {
           !user
             ? User.create({
-                userId: profile._json.id,
+                authVia: "Facebook",
+                authId: profile._json.id,
                 name: profile._json.name,
                 email: profile._json.email,
               }).then((user) => cb(null, user))

@@ -2,7 +2,6 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const { User } = require("./models/models");
 const handleRoutes = require("./routes/routesHandler");
 const handleAuthRoutes = require("./routes/authHandler");
 const passport = require("passport");

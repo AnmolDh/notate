@@ -35,7 +35,8 @@ app.get(
 app.get("/user", (req, res) => {
   if (req.isAuthenticated()) {
     res.json({
-      userId: req.user.userId,
+      authVia: req.user.authVia,
+      authId: req.user.authId,
       name: req.user.name,
       email: req.user.email,
       isLoggedIn: req.isAuthenticated(),

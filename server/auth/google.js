@@ -11,12 +11,13 @@ passport.use(
       callbackURL: `/auth/google/callback`,
     },
     function (accessToken, refreshToken, profile, cb) {
-      User.findOne({ userId: profile.id })
+      User.findOne({ authId: profile._json.sub })
         .exec()
         .then((user) => {
           !user
             ? User.create({
-                userId: profile._json.id,
+                authVia: "Google",
+                authId: profile._json.sub,
                 name: profile._json.name,
                 email: profile._json.email,
               }).then((user) => cb(null, user))
