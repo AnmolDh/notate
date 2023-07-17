@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { TypeAnimation } from "react-type-animation";
 import { Button } from "@mui/material";
 import GoogleIcon from "@mui/icons-material/Google";
+import FacebookIcon from "@mui/icons-material/Facebook";
 
 function Login() {
   useEffect(() => {
@@ -44,9 +45,19 @@ function Login() {
               className="google"
               variant="contained"
               startIcon={<GoogleIcon />}
+              color="success"
               href={`${process.env.REACT_APP_SERVER_URL}/auth/google`}
             >
               Google
+            </Button>
+            <Button
+              className="facebook"
+              variant="contained"
+              startIcon={<FacebookIcon />}
+              color="primary"
+              href={`${process.env.REACT_APP_SERVER_URL}/auth/facebook`}
+            >
+              Facebook
             </Button>
           </div>
         </div>
