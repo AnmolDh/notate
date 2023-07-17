@@ -16,7 +16,7 @@ passport.use(
         .then((user) => {
           !user
             ? User.create({
-                googleId: profile.id,
+                userId: profile.id,
                 name: profile._json.name,
                 email: profile._json.email,
               }).then((user) => cb(null, user))

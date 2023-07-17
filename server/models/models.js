@@ -8,7 +8,7 @@ const notesSchema = new mongoose.Schema({
 const Note = mongoose.model("Note", notesSchema);
 
 const userSchema = new mongoose.Schema({
-  googleId: String,
+  userId: String,
   name: String,
   email: String,
   notes: [notesSchema],
