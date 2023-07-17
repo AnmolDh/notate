@@ -5,11 +5,11 @@ import GoogleIcon from "@mui/icons-material/Google";
 
 function Login() {
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_SERVER_URL}/isAuth`, {
+    fetch(`${process.env.REACT_APP_SERVER_URL}/user`, {
       credentials: "include",
     })
       .then((response) => response.json())
-      .then((isAuth) => (isAuth ? window.location.replace("/home") : null));
+      .then((user) => (user.isLoggedIn ? window.location.replace("/home") : null));
   }, []);
   return (
     <div>

@@ -17,7 +17,18 @@ app.get(
   }
 );
 
-app.get("/isAuth", (req, res) => res.send(req.isAuthenticated()));
+app.get("/user", (req, res) => {
+  if (req.isAuthenticated()) {
+    res.json({
+      userId: req.user.userId,
+      name: req.user.name,
+      email: req.user.email,
+      isLoggedIn: req.isAuthenticated()
+    });
+  } else {
+    res.status(401).json({ error: "Unauthorized Access" });
+  }
+});
 
 app.get("/logout", (req, res) => {
   if (req.isAuthenticated()) {
