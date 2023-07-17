@@ -1,10 +1,11 @@
 const { Note, User } = require("../models/models");
-const defaultNotes = require("./defaultNotes")
+const defaultNotes = require("./defaultNotes");
 
 exports.getNotes = (req, res) => {
   if (req.isAuthenticated()) {
     User.findOne({ _id: req.user._id }).then((data) => {
-      data.notes.length === 0 && defaultNotes.forEach((e) => data.notes.push(e));
+      data.notes.length === 0 &&
+        defaultNotes.forEach((e) => data.notes.push(e));
       data.save();
       res.send(data.notes);
     });
@@ -19,11 +20,9 @@ exports.postNote = (req, res) => {
       title: req.body.title,
       content: req.body.content,
     });
-    User.findOne({ _id: req.user._id }).then((data) => {
-      data.notes.push(note);
-      data.save();
-      res.send(data);
-    });
+    User.updateOne({ _id: req.user._id }, { $push: { notes: note } }).then(
+      (data) => res.send(data)
+    );
   } else {
     res.status(401).json({ error: "Unauthorized Access" });
   }

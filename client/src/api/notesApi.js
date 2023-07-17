@@ -1,8 +1,5 @@
 export function getNotes() {
   return fetch(process.env.REACT_APP_SERVER_URL, {
-    headers: {
-      Authorization: `Bearer ${process.env.REACT_APP_SERVER_AUTH_TOKEN}`,
-    },
     credentials: "include",
   })
     .then((response) =>
@@ -19,7 +16,6 @@ export function postNote(note) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${process.env.REACT_APP_SERVER_AUTH_TOKEN}`,
     },
     credentials: "include",
     body: JSON.stringify(note),
@@ -33,7 +29,6 @@ export function deleteNote(id) {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${process.env.REACT_APP_SERVER_AUTH_TOKEN}`,
     },
     credentials: "include",
   })
@@ -46,7 +41,6 @@ export function editNote(id, note) {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${process.env.REACT_APP_SERVER_AUTH_TOKEN}`,
     },
     credentials: "include",
     body: JSON.stringify(note),
