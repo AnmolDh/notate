@@ -1,11 +1,15 @@
+export function getUser() {
+  return fetch(`${process.env.REACT_APP_SERVER_URL}/user`, {
+    credentials: "include",
+  }).then((response) => response.json());
+}
+
 export function getNotes() {
   return fetch(process.env.REACT_APP_SERVER_URL, {
     credentials: "include",
   })
     .then((response) =>
-      response.status === 401
-        ? window.location.replace("/")
-        : response.json()
+      response.status === 401 ? window.location.replace("/") : response.json()
     )
     .then((data) => data)
     .catch((err) => console.log(err));

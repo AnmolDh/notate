@@ -1,4 +1,5 @@
 import React from "react";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 function Header(props) {
   return (
@@ -12,7 +13,7 @@ function Header(props) {
         <button className="newNoteMobile" onClick={props.handleOpen}>
           +
         </button>
-        <img src="./avatar.png" alt="avatar"></img>
+        <a href="user"><AccountCircleIcon color="primary" sx={{ fontSize: 48 }} /></a>
       </div>
     </header>
   );

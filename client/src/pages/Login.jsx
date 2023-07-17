@@ -3,14 +3,13 @@ import { TypeAnimation } from "react-type-animation";
 import { Button } from "@mui/material";
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
+import { getUser } from "../api/notesApi";
 
 function Login() {
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_SERVER_URL}/user`, {
-      credentials: "include",
-    })
-      .then((response) => response.json())
-      .then((user) => (user.isLoggedIn ? window.location.replace("/home") : null));
+    getUser().then((user) =>
+      user.isLoggedIn ? window.location.replace("/home") : null
+    );
   }, []);
   return (
     <div>
