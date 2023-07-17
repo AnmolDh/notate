@@ -7,6 +7,7 @@ const handleRoutes = require("./routes/routesHandler");
 const handleAuthRoutes = require("./routes/authHandler");
 const passport = require("passport");
 const googleAuth = require("./auth/google");
+const facebookAuth = require("./auth/facebook");
 const session = require("express-session");
 require("dotenv").config();
 
@@ -37,6 +38,18 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(handleAuthRoutes);
 app.use(handleRoutes);
+
+passport.serializeUser(function (user, cb) {
+  process.nextTick(function () {
+    cb(null, user);
+  });
+});
+
+passport.deserializeUser(function (user, cb) {
+  process.nextTick(function () {
+    return cb(null, user);
+  });
+});
 
 const port = process.env.PORT || 4000;
 app.listen(port, () => {

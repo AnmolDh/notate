@@ -1,14 +1,15 @@
 const passport = require("passport");
-const GoogleStrategy = require("passport-google-oauth20").Strategy;
+const FacebookStrategy = require("passport-facebook").Strategy;
 const { User } = require("../models/models");
 require("dotenv").config();
 
 passport.use(
-  new GoogleStrategy(
+  new FacebookStrategy(
     {
-      clientID: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: `/auth/google/callback`,
+      clientID: process.env.FACEBOOK_APP_ID,
+      clientSecret: process.env.FACEBOOK_APP_SECRET,
+      callbackURL: `/auth/facebook/callback`,
+      profileFields: ["id", "displayName", "email"],
     },
     function (accessToken, refreshToken, profile, cb) {
       User.findOne({ userId: profile.id })

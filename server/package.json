@@ -2,9 +2,9 @@
   "name": "notate-server",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node index.js"
   },
   "author": "Anmol Dhiman",
   "license": "MIT",
@@ -17,6 +17,7 @@
     "jsonwebtoken": "^9.0.1",
     "mongoose": "^7.3.2",
     "passport": "^0.6.0",
+    "passport-facebook": "^3.0.0",
     "passport-google-oauth20": "^2.0.0"
   }
 }

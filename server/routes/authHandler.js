@@ -17,13 +17,28 @@ app.get(
   }
 );
 
+app.get(
+  "/auth/facebook",
+  passport.authenticate("facebook", { scope: ["public_profile", "email"] })
+);
+
+app.get(
+  "/auth/facebook/callback",
+  passport.authenticate("facebook", {
+    failureRedirect: `${process.env.CLIENT_URL}`,
+  }),
+  function (req, res) {
+    res.redirect(`${process.env.CLIENT_URL}/home`);
+  }
+);
+
 app.get("/user", (req, res) => {
   if (req.isAuthenticated()) {
     res.json({
       userId: req.user.userId,
       name: req.user.name,
       email: req.user.email,
-      isLoggedIn: req.isAuthenticated()
+      isLoggedIn: req.isAuthenticated(),
     });
   } else {
     res.status(401).json({ error: "Unauthorized Access" });
