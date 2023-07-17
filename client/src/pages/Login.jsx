@@ -20,8 +20,8 @@ function Login() {
       <section className="hero">
         <div className="heroLeft">
           <h1 className="heroText">
-            Welcome to Notate, the ultimate note-taking solution to help you
-            capture and organize your thoughts with ease.
+            Welcome to Notate, your brain's personal assistant for capturing and
+            organizing thoughts! We promise not to eat them... or do we?
           </h1>
           <div className="typeAnimate">
             <TypeAnimation
