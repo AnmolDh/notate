@@ -7,8 +7,10 @@
 }
 
 body {
-  background-color: black;
+  background: linear-gradient(black 50%, rgb(40, 40, 40) 100%);
+  background-size: cover;
   font-family: "Archivo", sans-serif;
+  min-height: 100vh;
 }
 
 header {
@@ -250,5 +252,10 @@ header h1 {
 
   .typeAnimate{
     font-size: 1.5rem;
+  }
+
+  .userInfo{
+    text-align: center;
+    margin: 60px 10px;
   }
 }
