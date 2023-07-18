@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Button } from "@mui/material";
 import { getUser } from "../api/notesApi";
 
 function User() {
@@ -29,6 +30,14 @@ function User() {
             Logged Via: <span>{user.authVia}</span>
           </h3>
         </div>
+        <Button
+          className="logout"
+          variant="contained"
+          color="warning"
+          href={`${process.env.REACT_APP_SERVER_URL}/logout`}
+        >
+          Logout
+        </Button>
       </div>
     </>
   );
