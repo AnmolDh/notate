@@ -20,6 +20,7 @@ passport.use(
                 authId: profile._json.sub,
                 name: profile._json.name,
                 email: profile._json.email,
+                profilePicture: profile._json.picture,
               }).then((user) => cb(null, user))
             : cb(null, user);
         })

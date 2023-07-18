@@ -9,7 +9,7 @@ passport.use(
       clientID: process.env.FACEBOOK_APP_ID,
       clientSecret: process.env.FACEBOOK_APP_SECRET,
       callbackURL: `/auth/facebook/callback`,
-      profileFields: ["id", "displayName", "email"],
+      profileFields: ["id", "displayName", "email", "picture"],
     },
     function (accessToken, refreshToken, profile, cb) {
       User.findOne({ authId: profile._json.id })
@@ -21,6 +21,7 @@ passport.use(
                 authId: profile._json.id,
                 name: profile._json.name,
                 email: profile._json.email,
+                profilePicture: profile._json.picture.data.url,
               }).then((user) => cb(null, user))
             : cb(null, user);
         })

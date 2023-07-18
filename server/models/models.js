@@ -12,6 +12,7 @@ const userSchema = new mongoose.Schema({
   authId: String,
   name: String,
   email: String,
+  profilePicture: String,
   notes: [notesSchema],
 });
 
