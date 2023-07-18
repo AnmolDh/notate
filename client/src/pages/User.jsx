@@ -9,6 +9,15 @@ function User() {
     getUser().then((user) => SetUser(user));
   }, []);
 
+  function logout() {
+    return fetch(`${process.env.REACT_APP_SERVER_URL}/logout`, {
+      method: "POST",
+      credentials: "include",
+    })
+      .then((response) => response.json())
+      .then((logout) => (logout ? window.location.replace("/") : null));
+  }
+
   return (
     <>
       <header>
@@ -34,7 +43,7 @@ function User() {
           className="logout"
           variant="contained"
           color="warning"
-          href={`${process.env.REACT_APP_SERVER_URL}/logout`}
+          onClick={logout}
         >
           Logout
         </Button>

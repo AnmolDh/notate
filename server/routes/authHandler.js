@@ -46,13 +46,13 @@ app.get("/user", (req, res) => {
   }
 });
 
-app.get("/logout", (req, res) => {
+app.post("/logout", (req, res) => {
   if (req.isAuthenticated()) {
     req.logout((err) => {
       if (err) {
-        res.json({ logout: false });
+        res.send(false);
       }
-      res.json({ logout: true });
+      res.send(true);
     });
   } else {
     res.status(401).json({ error: "Unauthorized Access" });
