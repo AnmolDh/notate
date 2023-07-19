@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Header from "../components/Header";
 import Notes from "../components/Notes";
+import Footer from "../components/Footer";
 
 function Home() {
   const [open, setOpen] = useState(false);
@@ -29,7 +30,7 @@ function Home() {
   }
 
   return (
-    <>
+    <div className="home">
       <Header handleOpen={handleOpen} />
       <Notes
         open={open}
@@ -43,7 +44,8 @@ function Home() {
         isNewNote={isNewNote}
         setIsNewNote={setIsNewNote}
       />
-    </>
+      <Footer/>
+    </div>
   );
 }
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "@mui/material";
 import { getUser } from "../api/notesApi";
+import Footer from "../components/Footer";
 
 function User() {
   const [user, SetUser] = useState({});
@@ -19,7 +20,7 @@ function User() {
   }
 
   return (
-    <>
+    <div className="user">
       <header>
         <h1>Notate</h1>
         <a href="/home">
@@ -48,7 +49,8 @@ function User() {
           Logout
         </Button>
       </div>
-    </>
+      <Footer/>
+    </div>
   );
 }
 

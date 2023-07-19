@@ -13,6 +13,8 @@ body {
   min-height: 100vh;
 }
 
+
+
 header {
   display: flex;
   color: white;
@@ -206,6 +208,27 @@ header h1 {
   width: 40px;
   border-radius: 50%;
 }
+
+.login, .home, .user{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+flex-grow: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 10px;
+}
+
+footer,
+footer a {
+  color: rgba(255, 255, 255, 0.692);
+  text-decoration: none;
+}
+
 
 @media (max-width: 768px) {
   header {
