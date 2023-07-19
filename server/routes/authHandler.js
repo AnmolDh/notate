@@ -39,6 +39,7 @@ app.get("/user", (req, res) => {
       authId: req.user.authId,
       name: req.user.name,
       email: req.user.email,
+      profilePicture: req.user.profilePicture,
       isLoggedIn: req.isAuthenticated(),
     });
   } else {

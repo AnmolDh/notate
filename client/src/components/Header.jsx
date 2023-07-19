@@ -1,10 +1,12 @@
-import React from "react";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import React, { useState, useEffect } from "react";
+import { getUser } from "../api/notesApi";
 
 function Header(props) {
-  function hrefToUser() {
-    window.location.href = "/user";
-  }
+  const [user, SetUser] = useState({});
+
+  useEffect(() => {
+    getUser().then((user) => SetUser(user));
+  }, []);
 
   return (
     <header>
@@ -17,7 +19,13 @@ function Header(props) {
         <button className="newNoteMobile" onClick={props.handleOpen}>
           +
         </button>
-        <AccountCircleIcon color="primary" onClick={hrefToUser} sx={{ fontSize: 45, cursor: "pointer" }} />
+        <a href="/user">
+          <img
+            src={user.profilePicture}
+            id="pfpHeader"
+            alt="userPFP"
+          />
+        </a>
       </div>
     </header>
   );
