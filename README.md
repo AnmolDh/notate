@@ -76,10 +76,6 @@ Notate is a note-taking web application built with React and Node.js. It is curr
 
    The client application will open in your preferred web browser at [http://localhost:3000](http://localhost:3000).
 
-## Hosting Requirements
-
-Notate currently requires a VPS (Virtual Private Server) hosting environment to ensure that the client and server can be hosted on the same domain. This is necessary to make cookies work seamlessly. Traditional hosting platforms like VPS providers (e.g., DigitalOcean, Linode) or cloud-based solutions (e.g., AWS EC2 instances) are recommended for deploying Notate.
-
 ## Technologies Used
 
 - React: JavaScript library for building the user interface.
