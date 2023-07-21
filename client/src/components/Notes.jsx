@@ -13,31 +13,31 @@ function Notes(props) {
   }
 
   const updateNotes = useCallback(() => {
-    getNotes().then((data) => {
-      const notes = data.map((note) => ({
+    async function fetchNotes() {
+      const notes = await getNotes();
+      const coloredNotes = notes.map((note) => ({
         ...note,
         bgColor: randomBgColor(),
       }));
-      setNotes(notes);
-    });
+      setNotes(coloredNotes);
+    }
+    fetchNotes();
   }, [setNotes]);
 
   useEffect(() => {
     updateNotes();
   }, [updateNotes]);
 
-  function handleAdd() {
-    postNote(props.addNote).then(() => {
-      updateNotes()
-    });
+  async function handleAdd() {
+    await postNote(props.addNote);
+    updateNotes();
     props.handleClose();
     props.setAddNote({ title: "", content: "" });
   }
 
-  function handleDelete(id) {
-    deleteNote(id).then(() => {
-      setNotes((prevNotes) => prevNotes.filter((note) => note._id !== id));
-    });
+  async function handleDelete(id) {
+    await deleteNote(id);
+    setNotes((prevNotes) => prevNotes.filter((note) => note._id !== id));
   }
 
   function handleEdit(id, title, content) {

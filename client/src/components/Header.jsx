@@ -2,10 +2,14 @@ import React, { useState, useEffect } from "react";
 import { getUser } from "../api/notesApi";
 
 function Header(props) {
-  const [user, SetUser] = useState({});
+  const [user, setUser] = useState({});
 
   useEffect(() => {
-    getUser().then((user) => SetUser(user));
+    async function fetchUser() {
+      const userInfo = await getUser();
+      setUser(userInfo);
+    }
+    fetchUser();
   }, []);
 
   return (
@@ -20,11 +24,7 @@ function Header(props) {
           +
         </button>
         <a href="/user">
-          <img
-            src={user.profilePicture}
-            id="pfpHeader"
-            alt="userPFP"
-          />
+          <img src={user.profilePicture} id="pfpHeader" alt="userPFP" />
         </a>
       </div>
     </header>

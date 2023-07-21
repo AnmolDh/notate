@@ -7,11 +7,15 @@ import { getUser } from "../api/notesApi";
 import Footer from "../components/Footer";
 
 function Login() {
-  useEffect(() => {
-    getUser().then((user) =>
-      user.isLoggedIn ? window.location.replace("/home") : null
-    );
-  }, []);
+useEffect(() => {
+  async function fetchUser() {
+    const userInfo = await getUser();
+    const isLoggedIn = userInfo.isLoggedIn ? true : false;
+    isLoggedIn && window.location.replace("/home");
+  }
+  fetchUser();
+}, []);
+
   return (
     <div className="login">
       <div>

@@ -4,10 +4,14 @@ import { getUser } from "../api/notesApi";
 import Footer from "../components/Footer";
 
 function User() {
-  const [user, SetUser] = useState({});
+  const [user, setUser] = useState({});
 
   useEffect(() => {
-    getUser().then((user) => SetUser(user));
+    async function fetchUser() {
+      const userInfo = await getUser();
+      setUser(userInfo);
+    }
+    fetchUser();
   }, []);
 
   function logout() {

@@ -10,21 +10,22 @@ passport.use(
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       callbackURL: `/auth/google/callback`,
     },
-    function (accessToken, refreshToken, profile, cb) {
-      User.findOne({ authId: profile._json.sub })
-        .exec()
-        .then((user) => {
-          !user
-            ? User.create({
-                authVia: "Google",
-                authId: profile._json.sub,
-                name: profile._json.name,
-                email: profile._json.email,
-                profilePicture: profile._json.picture,
-              }).then((user) => cb(null, user))
-            : cb(null, user);
-        })
-        .catch((err) => cb(err, null));
+    async function (accessToken, refreshToken, profile, cb) {
+      try {
+        let userInfo = await User.findOne({ authId: profile._json.sub });
+        if (!userInfo) {
+          userInfo = await User.create({
+            authVia: "Google",
+            authId: profile._json.sub,
+            name: profile._json.name,
+            email: profile._json.email,
+            profilePicture: profile._json.picture,
+          });
+        }
+        cb(null, userInfo);
+      } catch (err) {
+        cb(err, null);
+      }
     }
   )
 );

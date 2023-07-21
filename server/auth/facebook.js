@@ -11,21 +11,22 @@ passport.use(
       callbackURL: `/auth/facebook/callback`,
       profileFields: ["id", "displayName", "email", "picture"],
     },
-    function (accessToken, refreshToken, profile, cb) {
-      User.findOne({ authId: profile._json.id })
-        .exec()
-        .then((user) => {
-          !user
-            ? User.create({
-                authVia: "Facebook",
-                authId: profile._json.id,
-                name: profile._json.name,
-                email: profile._json.email,
-                profilePicture: profile._json.picture.data.url,
-              }).then((user) => cb(null, user))
-            : cb(null, user);
-        })
-        .catch((err) => cb(err, null));
+    async function (accessToken, refreshToken, profile, cb) {
+      try {
+        let userInfo = await User.findOne({ authId: profile._json.id });
+        if (!userInfo) {
+          userInfo = await User.create({
+            authVia: "Facebook",
+            authId: profile._json.id,
+            name: profile._json.name,
+            email: profile._json.email,
+            profilePicture: profile._json.picture.data.url,
+          });
+        }
+        cb(null, userInfo);
+      } catch (err) {
+        cb(err, null);
+      }
     }
   )
 );
