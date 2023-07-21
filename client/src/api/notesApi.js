@@ -1,9 +1,14 @@
+import axios from "axios";
+
 export async function getUser() {
   try {
-    const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/user`, {
-      credentials: "include",
-    });
-    return response.json();
+    const response = await axios.get(
+      `${process.env.REACT_APP_SERVER_URL}/user`,
+      {
+        withCredentials: true,
+      }
+    );
+    return response.data;
   } catch (err) {
     console.log(err);
   }
@@ -11,12 +16,11 @@ export async function getUser() {
 
 export async function getNotes() {
   try {
-    const response = await fetch(process.env.REACT_APP_SERVER_URL, {
-      credentials: "include",
+    const response = await axios.get(process.env.REACT_APP_SERVER_URL, {
+      withCredentials: true,
     });
     response.status === 401 && window.location.replace("/");
-    const notes = await response.json();
-    return notes;
+    return response.data;
   } catch (err) {
     console.log(err);
   }
@@ -24,15 +28,13 @@ export async function getNotes() {
 
 export async function postNote(note) {
   try {
-    const response = await fetch(process.env.REACT_APP_SERVER_URL, {
-      method: "POST",
+    const response = await axios.post(process.env.REACT_APP_SERVER_URL, note, {
       headers: {
         "Content-Type": "application/json",
       },
-      credentials: "include",
-      body: JSON.stringify(note),
+      withCredentials: true,
     });
-    return response.json();
+    return response.data;
   } catch (err) {
     console.log(err);
   }
@@ -40,14 +42,16 @@ export async function postNote(note) {
 
 export async function deleteNote(id) {
   try {
-    const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/${id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-    });
-    return response.json();
+    const response = await axios.delete(
+      `${process.env.REACT_APP_SERVER_URL}/${id}`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      }
+    );
+    return response.data;
   } catch (err) {
     console.log(err);
   }
@@ -55,15 +59,17 @@ export async function deleteNote(id) {
 
 export async function editNote(id, note) {
   try {
-    const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-      body: JSON.stringify(note),
-    });
-    return response.json();
+    const response = await axios.put(
+      `${process.env.REACT_APP_SERVER_URL}/${id}`,
+      note,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      }
+    );
+    return response.data;
   } catch (err) {
     console.log(err);
   }
