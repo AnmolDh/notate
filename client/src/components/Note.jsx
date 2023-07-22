@@ -14,10 +14,22 @@ function Note(props) {
         <p>{props.content}</p>
       </div>
       <div className="toolsDiv">
-        <Fab className="icon" color="gray" size="small" aria-label="edit" onClick={props.handleEdit}>
+        <Fab
+          className="icon"
+          color="gray"
+          size="small"
+          aria-label="edit"
+          onClick={props.handleEdit}
+        >
           <EditIcon />
         </Fab>
-        <Fab className="icon" color="gray" size="small" aria-label="delete" onClick={props.handleDelete}>
+        <Fab
+          className="icon"
+          color="gray"
+          size="small"
+          aria-label="delete"
+          onClick={props.handleDelete}
+        >
           <DeleteIcon />
         </Fab>
       </div>

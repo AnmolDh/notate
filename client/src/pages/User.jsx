@@ -15,7 +15,7 @@ function User(props) {
 
   return (
     <div className="user">
-      <Header/>
+      <Header />
       <div className="userInfo">
         <h1>User Info</h1>
         <div>
@@ -38,7 +38,7 @@ function User(props) {
           Logout
         </Button>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 }
