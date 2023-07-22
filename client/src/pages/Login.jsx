@@ -1,20 +1,14 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { TypeAnimation } from "react-type-animation";
 import { Button } from "@mui/material";
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
-import { getUser } from "../api/notesApi";
 import Footer from "../components/Footer";
 
-function Login() {
-useEffect(() => {
-  async function fetchUser() {
-    const userInfo = await getUser();
-    const isLoggedIn = userInfo.isLoggedIn ? true : false;
-    isLoggedIn && window.location.replace("/home");
+function Login(props) {
+  if (props.user) {
+    props.user.isLoggedIn && window.location.replace("/home");
   }
-  fetchUser();
-}, []);
 
   return (
     <div className="login">

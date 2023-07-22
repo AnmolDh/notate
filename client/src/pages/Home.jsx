@@ -3,7 +3,9 @@ import Header from "../components/Header";
 import Notes from "../components/Notes";
 import Footer from "../components/Footer";
 
-function Home() {
+function Home(props) {
+  !props.user && window.location.replace("/");
+
   const [open, setOpen] = useState(false);
   const [isNewNote, setIsNewNote] = useState(true);
   const handleOpen = () => setOpen(true);
@@ -31,7 +33,7 @@ function Home() {
 
   return (
     <div className="home">
-      <Header handleOpen={handleOpen} />
+      <Header handleOpen={handleOpen} user={props.user} />
       <Notes
         open={open}
         createNote={createNote}
@@ -44,7 +46,7 @@ function Home() {
         isNewNote={isNewNote}
         setIsNewNote={setIsNewNote}
       />
-      <Footer/>
+      <Footer />
     </div>
   );
 }
