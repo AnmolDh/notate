@@ -39,8 +39,10 @@ Notate is a note-taking web application built with React and Node.js. It is curr
    - `CLIENT_URL`: The URL where the client application is hosted.
    - `MONGODB_URL`: The connection URL for your MongoDB database.
    - `SESSION_SECRET`: A secret key used to encrypt session data.
-   - `GOOGLE_CLIENT_ID`: Your Google API client ID for authentication.
-   - `GOOGLE_CLIENT_SECRET`: Your Google API client secret for authentication
+   - `GOOGLE_CLIENT_ID`: Your Google client ID for Google OAuth.
+   - `GOOGLE_CLIENT_SECRET`: Your Google client secret for Google OAuth.
+   - `FACEBOOK_APP_ID`: Your Facebook app ID for Facebook OAuth.
+   - `FACEBOOK_APP_SECRET`: Your Facebook app secret for Facebook OAuth.
 
 4. Start the server:
 
