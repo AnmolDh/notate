@@ -13,7 +13,7 @@ require("dotenv").config();
 const app = express();
 mongoose.connect(process.env.MONGODB_URL);
 
-app.set("trust proxy", true);
+process.env.NODE_ENV === "production" && app.set("trust proxy", true);
 app.use(
   cors({
     origin: process.env.CLIENT_URL,
@@ -27,10 +27,10 @@ app.use(
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
-    cookie: {
+    cookie: process.env.NODE_ENV === "production" ? {
       sameSite: "none",
       secure: true,
-    },
+    } : {},
   })
 );
 app.use(passport.initialize());

@@ -36,6 +36,7 @@ Notate is a note-taking web application built with React and Node.js. It is curr
 
 3. Set up the following environment variables in the server:
 
+   - `NODE_ENV`: When hosting use **`production`**, else use **`development`**.
    - `CLIENT_URL`: The URL where the client application is hosted.
    - `MONGODB_URL`: The connection URL for your MongoDB database.
    - `SESSION_SECRET`: A secret key used to encrypt session data.
